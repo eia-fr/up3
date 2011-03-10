@@ -1,0 +1,59 @@
+%%++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+%%  Packages
+\usepackage[ngerman,frenchb]{babel} 										% Langue
+\usepackage[utf8]{inputenc}										% Encodage
+\usepackage[T1]{fontenc}											% Requis
+
+\usepackage[pdftex]{graphicx}										% Images 
+\usepackage{fancyhdr}												% Spécifier Entête et pieds.
+
+\usepackage{url}													% URL 
+\usepackage{hyperref}
+\usepackage{verbatim}												% Texte entre 	\begin{verbatim}  \end{verbatim} ne sera pas interprété
+\usepackage{listliketab}											% List spéciale, notament comme tableau
+\usepackage{longtable}
+\usepackage{booktabs}												% Permet de faire des tableau plus avec des traits
+% Exemple:
+%\begin{tabular}{llr}
+%\toprule
+%\multicolumn{2}{c}{Item} \\
+%\cmidrule(r){1-2}
+%Animal & Description & Price (\$) \\
+%\midrule
+%Gnat  & per gram & 13.65 \\
+%      & each     &  0.01 \\
+%\bottomrule
+%\end{tabular}
+
+\usepackage{color}		
+%% \definecolor{orange}{RGB}{255,127,0} http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\usepackage{tabularx}											% Tableau streatching 
+\usepackage{colortbl}											% Permet des tableaux exotiquement colorier 
+\usepackage{wrapfig}											% Permet d'alligner une figure à guache ou à droite
+%\begin{wrapfigure}{r}{40mm}
+%  \begin{center}
+%    \includegraphics{toucan.eps}
+%  \end{center}
+%  \caption{The Toucan}
+%\end{wrapfigure}
+\usepackage{rotating}
+\usepackage{amsmath}
+\usepackage{subfig}
+\usepackage{pdfpages}										% inclus pdf http://www-hep2.fzu.cz/tex/texmf-dist/doc/latex/pdfpages/pdf-ex.pdf
+\usepackage[subfigure]{tocloft}
+%\begin{figure}[htp]
+%  \begin{center}
+%    \subfigure[Original image]{\label{fig:edge-a}\includegraphics[scale=0.75]{toucan.eps}}
+%    \subfigure[After Laplace edge detection]{\label{fig:edge-b}\includegraphics[scale=0.75]{laplace_toucan.eps}} \\
+%    \subfigure[After Sobel edge detection]{\label{fig:edge-c}\includegraphics[scale=0.75]{sobel_toucan.eps}}
+%  \end{center}
+%  \caption{Various edge detection algorithms}
+%  \label{fig:edge}
+%\end{figure}
+\usepackage[table]{xcolor}								
+\usepackage{url}	
+%\usepackage{lscape} 								%% Texte en landspcae
+%\begin{landscape}
+%notre texte
+%\end{landscape}

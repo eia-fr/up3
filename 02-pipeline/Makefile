@@ -1,5 +1,5 @@
 
-ARRAY_SIZE=400000000
+ARRAY_SIZE=40000000
 
 initial: initial.c
 	gcc initial.c -o initial
