@@ -1,0 +1,63 @@
+\documentclass[a4paper,10pt]{article}
+
+\include{./include/pkg}
+\usepackage{listings}
+%\lstset{
+%language=C,
+%basicstyle=\small\sffamily,
+%numbers=left,
+%numberstyle=\tiny,
+%frame=tb,
+%columns=fullflexible,
+%showstringspaces=false
+%}
+\lstset{language=C,captionpos=b,tabsize=3,frame=lines,keywordstyle=\color{blue},commentstyle=\color{darkgreen},stringstyle=\color{red},numbers=left,numberstyle=\tiny,numbersep=5pt,breaklines=true,showstringspaces=false,basicstyle=\footnotesize,emph={label}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Design
+%%\input{./include/header}
+
+\begin{document}
+	\input{./include/titles}
+	
+	\input{./include/header}
+	
+	\section{ Find the password used by the programm}
+		\begin{enumerate}
+		\item Run the program and analyse the basic functionality
+		\subitem The program display Enter password 
+		\subitem We enter the password
+		\subitem The program write Bad password. 
+		\item use the command strings to analyse if there is some relevant string that can be a password. 
+		\subitem To many strings we can not exploit this method
+		\item objdump -d password\_1
+		\subitem find main section, found a call for strcomp (string compare)
+		\subitem Just before the call of strcomp will move on the stack 2 arg .
+		\subitem One arg is the entered password and the second arg is a pointer(0x080497d0).
+		\item use ddd to find the value of the pointer (display 0x080497d0)
+		\subitem we found the value 0x08048614
+		\item use ddd to display the value at address 0x08048614
+		\subitem we found the password : scanf
+		\end{enumerate}
+			\begin{center}
+						 \includegraphics[width=0.8\textwidth]{./images/withDebug}
+				\end{center}
+		\subsection{Alternative}
+		\begin{enumerate}
+			\item use readelf -x <24(data)> to read the fixed values
+			\subitem we found the pointer to the value in the rodata section
+			\item use readelf -x <15(rodata)> to read the value of the password.
+			\subitem we found the password: scanf
+		\end{enumerate}
+		
+		\section{When the password is found, delete the symbols with the command strip  and use ddd without symbols}
+			\begin{enumerate}
+				\item strip password\_1
+				\item open the program with ddd
+				\item with the console add a breakpoint in the main section(break @)
+				\item with the console run the program and display the values of the pointer 
+				\end{enumerate}
+					\begin{center}
+										 \includegraphics[width=0.8\textwidth]{./images/withoutDebug}
+					\end{center}
+\end{document}
